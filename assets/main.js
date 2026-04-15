@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuData;
     async function loadMenu() {
             try {
-        const response = await fetch("/data/lunch.json");
+        const response = await fetch("/piccoli-amici-mensa/assets/data/lunch.json");
         const data = await response.json();
 
         menuData = data['menu_estivo'];
