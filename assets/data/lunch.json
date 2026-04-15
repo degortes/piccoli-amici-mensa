@@ -1,0 +1,152 @@
+{
+  "menu_estivo": {
+    "settimana_1": {
+      "lunedi": {
+        "primo": "Pasta al pomodoro e basilico",
+        "secondo": "Frittata di zucchine al forno",
+        "contorno": "Carote a fiammifero",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "martedi": {
+        "primo": "Insalata di riso",
+        "secondo": "Platessa gratinata al forno",
+        "contorno": "Fagiolini al vapore",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "mercoledi": {
+        "primo": "Passato di verdure di stagione con pastina",
+        "secondo": "Bocconcini di petto di pollo alla salvia",
+        "contorno": "Verdura cruda di stagione",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "giovedi": {
+        "primo": "Pizza margherita",
+        "secondo": "Prosciutto cotto",
+        "contorno": "Zucchine trifolate",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "venerdi": {
+        "primo": "Minestra di pasta e patate",
+        "secondo": "Scaloppine di maiale al limone",
+        "contorno": "Pomodori ad insalata o verdura cruda mista di stagione",
+        "pane": "Pane",
+        "frutta": "Macedonia di frutta fresca di stagione"
+      }
+    },
+    "settimana_2": {
+      "lunedi": {
+        "primo": "Pasta all'olio e parmigiano",
+        "secondo": "Sogliola o Platessa al forno con pomodorini o gratinate",
+        "contorno": "Lattuga e pomodori",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "martedi": {
+        "primo": "Passato di verdure di stagione con orzo",
+        "secondo": "Polpettine di vitellone al forno con patate e carote al vapore",
+        "contorno": "Verdura cruda di stagione",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "mercoledi": {
+        "primo": "Gnocchi di patate al pomodoro o burro e salvia",
+        "secondo": "Formaggio tenero dolce (dolcesardo, peretta sarda, mozzarella, stracchino)",
+        "contorno": "Verdura cruda di stagione",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "giovedi": {
+        "primo": "Risotto alle carote o all'olio",
+        "secondo": "Scaloppine di tacchino",
+        "contorno": "Zucchine alla pizzaiola",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "venerdi": {
+        "primo": "Lasagna al forno con verdure di stagione, peretta e grana padano",
+        "secondo": null,
+        "contorno": "Verdura cruda di stagione",
+        "pane": "Pane",
+        "frutta": "Macedonia di frutta fresca di stagione"
+      }
+    },
+    "settimana_3": {
+      "lunedi": {
+        "primo": "Torta di ricotta e spinaci",
+        "secondo": "Patate al forno",
+        "contorno": null,
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "martedi": {
+        "primo": "Pasta alle zucchine",
+        "secondo": "Arista di maiale arrosto al latte o agli aromi",
+        "contorno": "Verdura cruda di stagione",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "mercoledi": {
+        "primo": "Pastina in brodo di pollo",
+        "secondo": "Insalata di pollo con verdure di stagione al vapore",
+        "contorno": null,
+        "pane": "Pane",
+        "frutta": "Macedonia di frutta fresca di stagione"
+      },
+      "giovedi": {
+        "primo": "Pasta al pomodoro fresco e basilico",
+        "secondo": "Filetti di merluzzo o platessa al limone",
+        "contorno": "Bietoline lesse all'olio",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "venerdi": {
+        "primo": "Riso all'olio e parmigiano o grana",
+        "secondo": "Involtini di prosciutto e formaggio tenero",
+        "contorno": "Pomodori ad insalata o verdura cruda di stagione",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      }
+    },
+    "settimana_4": {
+      "lunedi": {
+        "primo": "Passato di legumi con orzo e riso",
+        "secondo": "Caprese",
+        "contorno": null,
+        "pane": "Pane",
+        "frutta": "Macedonia di frutta di stagione"
+      },
+      "martedi": {
+        "primo": "Pasta al pesto con basilico fresco",
+        "secondo": "Polpettine di pesce al forno",
+        "contorno": "Carote a fiammifero",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "mercoledi": {
+        "primo": "Pasta al pomodoro e basilico",
+        "secondo": "Arrosto di tacchino agli aromi",
+        "contorno": "Zucchine al vapore",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "giovedi": {
+        "primo": "Insalata di riso",
+        "secondo": "Uovo (frittata o strapazzato)",
+        "contorno": "Verdura cruda di stagione",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      },
+      "venerdi": {
+        "primo": "Passato di verdure di stagione con pastina",
+        "secondo": "Bocconcini di vitellone alla pizzaiola",
+        "contorno": "Verdura cruda di stagione gratinata al forno o fagiolini al vapore",
+        "pane": "Pane",
+        "frutta": "Frutta fresca di stagione"
+      }
+    }
+  }
+}

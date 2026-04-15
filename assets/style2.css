@@ -1,0 +1,276 @@
+:root {
+    /* Palette Colori Calda e Naturale */
+    --bg-color: #f8f1e6; /* Crema caldo di sfondo */
+    --text-primary: #333;
+    --text-on-dark: #fffef2; /* Crema chiaro per il testo su card scure */
+    --gold-accent: #d2b48c; /* Oro pallido per i titoli */
+    --white: #ffffff;
+
+    /* Colori base per gli sfondi materici (che verranno sovrapposti da immagini) */
+    --header-tiles-base: #a3c4ab; /* Verde salvia */
+    --card-terracotta-base: #b05c42; /* Cotto */
+}
+
+body {
+    font-family: sans-serif; /* Font con grazia per un look premium */
+    background-color: var(--bg-color);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: pan-y;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    /* Sfondo piastrelle: immagine materica (da generare) */
+    background-image: url('images/wall.png');
+    background-size: cover;
+    background-color: var(--header-tiles-base); /* Fallback */
+    border-bottom: 3px solid #6b8f75; /* Bordo scuro per profondità */
+    z-index: 100;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: var(--gold-accent); /* Testo dorato */
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3); /* Leggera ombra per rilievo */
+}
+
+/* Calendario */
+.calendar-wrapper {
+    background: transparent; /* Fondo trasparente per vedere lo sfondo body */
+    border-bottom: none;
+    margin-top: 10px;
+}
+.calendar-container {
+    display: flex;
+    padding: 15px 10px;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.calendar-container::-webkit-scrollbar { display: none; }
+
+.slide {
+    min-width: 60px;
+    /* Sfondo legno: immagine materica (da generare) */
+    background-image: url('images/wood.png');
+    background-color: #e0d0b0; /* Fallback legno chiaro */
+    background-size: cover;
+    padding: 10px;
+    border-radius: 12px; /* Angoli più morbidi */
+    text-align: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.3s ease-out;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.15); /* Ombra morbida */
+}
+
+/* Stato attivo: Bagliore oro e colore più intenso */
+.slide.active {
+    border-color: #d2b48c;
+    transform:scale(1.2); /* Sollevamento maggiore */
+    box-shadow: 0 0 15px rgba(210, 180, 140, 0.7); /* Bagliore oro */
+}
+
+.slide.weekend { opacity: 0.5; }
+.slide strong {
+    display: block;
+    font-size: 1.5rem;
+    pointer-events: none;
+    color: var(--text-primary);
+}
+.slide.active strong { color: lightgoldenrodyellow}
+.slide span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    pointer-events: none;
+    color: #666;
+}
+
+/* Pulsante OGGI materico */
+#today {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #c09060; /* Legno scuro/ottone */
+    color: var(--gold-accent);
+    border-radius: 20px;
+    margin: 5px 15px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 1px solid #906040;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Slider delle Card */
+.main-slider {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.cards-container {
+    display: flex;
+    min-height: 80%; /* Card leggermente più alte */
+    width: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+    align-items: center;
+}
+
+.menu-card {
+    flex: 0 0 80%; /* Card più prominenti */
+    margin-right: 5%;
+    box-sizing: border-box;
+    opacity: 0.4;
+    transform: scale(0.9);
+    transition: all 0.4s ease-out;
+    border-radius: 25px;
+    height: 100%;
+}
+
+h3 {
+    text-transform: capitalize;
+}
+
+/* Colori materici diversi per ogni card (es. cotto scuro, legno scuro) */
+/* Sovrascriviamo gli alpha brillanti con colori materici */
+.menu-card:nth-of-type(4n + 1) .card-content { background-color: #a05030; } /* Cotto Intenso */
+.menu-card:nth-of-type(4n + 2) .card-content { background-color: #704020; } /* Legno Scuro */
+.menu-card:nth-of-type(4n + 3) .card-content { background-color: #506050; } /* Verde Scuro */
+.menu-card:nth-of-type(4n + 4) .card-content { background-color: #aaa064; } /* Verde Scuro */
+
+.menu-card.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3); /* Ombra profonda */
+}
+
+/* Desktop: Card più larghe e centrate */
+@media (min-width: 768px) {
+    .menu-card { flex: 0 0 40%; margin-right: 2%; }
+}
+
+.card-content {
+    background-color: var(--card-terracotta-base); /* Fallback materico scuro */
+    padding: 12px 12px 20px;
+    border-radius: 25px; /* Angoli molto morbidi */
+    min-height: 40svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Spazia meglio i piatti */
+    border: 2px solid rgba(0,0,0,0.2);
+    color: var(--text-on-dark); /* Testo crema per leggibilità */
+}
+
+/* Aggiunta dell'immagine del piatto */
+.menu-item {
+    --bg-image: '';
+    --bg-rgb: '';
+    background-position: 34px 1px;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    align-items: flex-start;
+    margin-bottom: 1px;
+    padding: 15px 15px 15px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    background-repeat: no-repeat;/*rattino bianco soft */
+    background-image:
+            linear-gradient(to right,
+            rgba(var(--bg-rgb), 1) 0%,
+            rgba(var(--bg-rgb), 0.7) 30%,
+            rgba(var(--bg-rgb), 0) 70%
+            ),
+            var(--bg-image);
+}
+.primo {
+    background-image:
+            linear-gradient(to right,
+            rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
+            rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
+            rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
+            ),url("images/primo.png");
+}
+.secondo {
+    background-image:
+            linear-gradient(to right,
+            rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
+            rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
+            rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
+            ),url("images/secondo.png");
+}
+.contorno {
+    background-image:
+            linear-gradient(to right,
+            rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
+            rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
+            rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
+            ), url("images/contorno.png");
+}
+.pane {
+    background-image:
+            linear-gradient(to right,
+            rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
+            rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
+            rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
+            ), url("images/pane.png");
+}
+.frutta {
+    background-image:
+            linear-gradient(to right,
+            rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
+            rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
+            rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
+            ), url("images/frutta.png");
+}
+/* Placeholder per l'immagine del piatto (serve CSS extra per il JS) */
+.food-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; /* Immagine tonda */
+    border: 2px solid var(--white);
+    margin-right: 15px;
+    flex-shrink: 0;
+    object-fit: cover;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    background-color: #eee; /* Fallback immagine */
+}
+
+/* Se l'immagine manca, mostriamo solo il testo */
+.menu-item.no-img .food-img { display: none; }
+.menu-item.no-img .item-text { width: 100%; }
+
+.label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--gold-accent); /* Etichette dorate */
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.content {
+    font-size: 1.20rem;
+    color: var(--text-on-dark);
+    line-height: 1.4;
+    font-weight: 300; /* Testo sottile elegante */
+}
+main {
+    display: flex;
+    flex-direction: column;
+}
+.no-service { text-align: center; color: rgba(255,255,255,0.5); font-style: italic; font-size: 1rem; }
