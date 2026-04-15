@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     // ...continua per gli altri giorni
                 ];
                 const color = coloriSettimana[i % coloriSettimana.length];
-                const primo = `url('images/primo.png')`;
-                const secondo = `url('images/secondo.png')`;
-                const contorno = `url('images/contorno.png')`;
-                const pane = `url('images/pane.png')`;
-                const frutta = `url('images/frutta.png')`;
+                const primo = `url('images/primo.jpg')`;
+                const secondo = `url('images/secondo.jpg')`;
+                const contorno = `url('images/contorno.jpg')`;
+                const pane = `url('images/pane.jpg')`;
+                const frutta = `url('images/frutta.jpg')`;
                 if (!menu) return `<div class="card-content"><div class="no-service">Weekend<br>Mensa Chiusa</div></div>`;
 
                 return `

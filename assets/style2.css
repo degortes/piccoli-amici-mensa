@@ -25,7 +25,7 @@ header {
     padding: 20px;
     text-align: center;
     /* Sfondo piastrelle: immagine materica (da generare) */
-    background-image: url('images/wall.png');
+    background-image: url('images/wall.jpg');
     background-size: cover;
     background-color: var(--header-tiles-base); /* Fallback */
     border-bottom: 3px solid #6b8f75; /* Bordo scuro per profondità */
@@ -61,7 +61,7 @@ header h1 {
 .slide {
     min-width: 60px;
     /* Sfondo legno: immagine materica (da generare) */
-    background-image: url('images/wood.png');
+    background-image: url('images/wood.jpg');
     background-color: #e0d0b0; /* Fallback legno chiaro */
     background-size: cover;
     padding: 10px;
@@ -202,7 +202,7 @@ h3 {
             rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
             rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
             rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
-            ),url("images/primo.png");
+            ),url("images/primo.jpg");
 }
 .secondo {
     background-image:
@@ -210,7 +210,7 @@ h3 {
             rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
             rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
             rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
-            ),url("images/secondo.png");
+            ),url("images/secondo.jpg");
 }
 .contorno {
     background-image:
@@ -218,7 +218,7 @@ h3 {
             rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
             rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
             rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
-            ), url("images/contorno.png");
+            ), url("images/contorno.jpg");
 }
 .pane {
     background-image:
@@ -226,7 +226,7 @@ h3 {
             rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
             rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
             rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
-            ), url("images/pane.png");
+            ), url("images/pane.jpg");
 }
 .frutta {
     background-image:
@@ -234,7 +234,7 @@ h3 {
             rgba(160, 80, 48, 1) 0%,    /* Colore pieno (es. Cotto) */
             rgba(160, 80, 48, 0.9) 30%, /* Inizia a diventare trasparente */
             rgba(160, 80, 48, 0) 80%    /* Completamente trasparente per mostrare il piatto */
-            ), url("images/frutta.png");
+            ), url("images/frutta.jpg");
 }
 /* Placeholder per l'immagine del piatto (serve CSS extra per il JS) */
 .food-img {
