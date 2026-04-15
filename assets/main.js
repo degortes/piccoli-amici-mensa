@@ -1,76 +1,80 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
-
     let menuData;
+
     async function loadMenu() {
-            try {
-        const response = await fetch("/piccoli-amici-mensa/assets/data/lunch.json");
-        const data = await response.json();
+        try {
+            const response = await fetch("./assets/data/lunch.json");
+            const data = await response.json();
 
-        menuData = data['menu_estivo'];
+            menuData = data['menu_estivo'];
 
-        const startDate = new Date(2026, 3, 6);
-        const endDate = new Date(2026, 8, 30);
-        const daysWeek = ["domenica", "lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato"];
-        const monthsAbbr = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"];
+            const startDate = new Date(2026, 3, 6);
+            const endDate = new Date(2026, 8, 30);
+            const daysWeek = ["domenica", "lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato"];
+            const monthsAbbr = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"];
 
-        let currentIndex = 0;
-        let datesArray = [];
-        const container = document.getElementById('cardsContainer');
-        const calendar = document.getElementById('calendar');
+            let currentIndex = 0;
+            let datesArray = [];
+            const container = document.getElementById('cardsContainer');
+            const calendar = document.getElementById('calendar');
 
-        function init() {
-        let d = new Date(startDate);
-        let i = 0;
-        const today = new Date();
-        let startIndex = 0;
+            function init() {
+                let d = new Date(startDate);
+                let i = 0;
+                const today = new Date();
+                let startIndex = 0;
 
-        while (d <= endDate) {
-        const dateObj = new Date(d);
-        datesArray.push(dateObj);
+                while (d <= endDate) {
+                    const dateObj = new Date(d);
+                    datesArray.push(dateObj);
 
-        const slide = document.createElement('div');
-        slide.className = `slide ${dateObj.getDay() === 0 || dateObj.getDay() === 6 ? 'weekend' : ''}`;
-        slide.innerHTML = `<span>${daysWeek[dateObj.getDay()].substring(0,3)}</span><strong>${dateObj.getDate()}</strong><span>${monthsAbbr[dateObj.getMonth()]}</span>`;
-        slide.onclick = () => goToIndex(Array.from(calendar.children).indexOf(slide));
-        calendar.appendChild(slide);
+                    const slide = document.createElement('div');
+                    slide.className = `slide ${dateObj.getDay() === 0 || dateObj.getDay() === 6 ? 'weekend' : ''}`;
+                    slide.innerHTML = `<span>${daysWeek[dateObj.getDay()].substring(0, 3)}</span><strong>${dateObj.getDate()}</strong><span>${monthsAbbr[dateObj.getMonth()]}</span>`;
+                    slide.onclick = () => goToIndex(Array.from(calendar.children).indexOf(slide));
+                    calendar.appendChild(slide);
 
-        const card = document.createElement('div');
-        card.className = 'menu-card';
-        card.innerHTML = createCardHTML(dateObj , i);
-        container.appendChild(card);
+                    const card = document.createElement('div');
+                    card.className = 'menu-card';
+                    card.innerHTML = createCardHTML(dateObj, i);
+                    container.appendChild(card);
 
-        if (dateObj.toDateString() === today.toDateString()) startIndex = i;
-        d.setDate(d.getDate() + 1);
-        i++;
-    }
+                    if (dateObj.toDateString() === today.toDateString()) startIndex = i;
+                    d.setDate(d.getDate() + 1);
+                    i++;
 
-        setTimeout(() => goToIndex(startIndex), 100);
-        setupInteraction();
-    }
+                }
+                    document.querySelector('#today').addEventListener('click', () => {
+                        setTimeout(() => goToIndex(startIndex), 100);
+                    } );
 
-        function createCardHTML(date, i) {
-        const diffDays = Math.floor((date - startDate) / (1000 * 60 * 60 * 24));
-        const weekNum = (Math.floor(diffDays / 7) % 4) + 1;
-        const dayName = daysWeek[date.getDay()];
-        const menu = (dayName === "sabato" || dayName === "domenica") ? null : menuData[`settimana_${weekNum}`][dayName];
-        const coloriSettimana = [
-            "160, 80, 48",  // Lunedì (Cotto)
-            "112, 64, 32",  // Martedì (Verde)
-            "80, 96, 80",  // Mercoledì (Blu)
-            "170, 160, 100",  // Mercoledì (Blu)
-            // ...continua per gli altri giorni
-        ];
-            const color =  coloriSettimana[i % coloriSettimana.length];
-            const primo = `url('images/primo.png')`;
-            const secondo = `url('images/secondo.png')`;
-            const contorno = `url('images/contorno.png')`;
-            const pane = `url('images/pane.png')`;
-            const frutta = `url('images/frutta.png')`;
-        if (!menu) return `<div class="card-content"><div class="no-service">Weekend<br>Mensa Chiusa</div></div>`;
+                setTimeout(() => goToIndex(startIndex), 100);
+                setupInteraction();
+            }
 
-            return `
+            function createCardHTML(date, i) {
+                const diffDays = Math.floor((date - startDate) / (1000 * 60 * 60 * 24));
+                const weekNum = (Math.floor(diffDays / 7) % 4) + 1;
+                const dayName = daysWeek[date.getDay()];
+                const menu = (dayName === "sabato" || dayName === "domenica") ? null : menuData[`settimana_${weekNum}`][dayName];
+                const coloriSettimana = [
+                    "160, 80, 48",  // Lunedì (Cotto)
+                    "112, 64, 32",  // Martedì (Verde)
+                    "80, 96, 80",  // Mercoledì (Blu)
+                    "170, 160, 100",  // Mercoledì (Blu)
+                    // ...continua per gli altri giorni
+                ];
+                const color = coloriSettimana[i % coloriSettimana.length];
+                const primo = `url('images/primo.png')`;
+                const secondo = `url('images/secondo.png')`;
+                const contorno = `url('images/contorno.png')`;
+                const pane = `url('images/pane.png')`;
+                const frutta = `url('images/frutta.png')`;
+                if (!menu) return `<div class="card-content"><div class="no-service">Weekend<br>Mensa Chiusa</div></div>`;
+
+                return `
                 <div class="card-content">
                     <h3>${dayName}</h3>
                     
@@ -102,62 +106,69 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 `;
-    }
+            }
 
-        function goToIndex(index) {
-        if (index < 0 || index >= datesArray.length) return;
-        currentIndex = index;
+            function goToIndex(index) {
+                if (index < 0 || index >= datesArray.length) return;
+                currentIndex = index;
 
-        // OFFSET LOGIC:
-        // Su mobile ogni card è 60% + 5% margine = 65% di spostamento per ogni index.
-        // Partiamo da un piccolo padding iniziale (es: 10%) per non appiccicare la card al bordo sinistro.
-        const cardStep = window.innerWidth < 768 ? 85 : 42;
-        const paddingLeft = 10;
-        const move = paddingLeft - (index * cardStep);
+                // OFFSET LOGIC:
+                // Su mobile ogni card è 60% + 5% margine = 65% di spostamento per ogni index.
+                // Partiamo da un piccolo padding iniziale (es: 10%) per non appiccicare la card al bordo sinistro.
+                const cardStep = window.innerWidth < 768 ? 85 : 42;
+                const paddingLeft = 10;
+                const move = paddingLeft - (index * cardStep);
 
-        container.style.transform = `translateX(${move}%)`;
+                container.style.transform = `translateX(${move}%)`;
 
-        document.querySelectorAll('.menu-card').forEach((c, i) => c.classList.toggle('active', i === index));
-        const slides = document.querySelectorAll('.slide');
-        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+                document.querySelectorAll('.menu-card').forEach((c, i) => c.classList.toggle('active', i === index));
+                const slides = document.querySelectorAll('.slide');
+                slides.forEach((s, i) => s.classList.toggle('active', i === index));
 
-        const activeSlide = slides[index];
-        calendar.scrollTo({
-        left: activeSlide.offsetLeft - (calendar.offsetWidth / 2) + (activeSlide.offsetWidth / 2),
-        behavior: 'smooth'
-    });
-    }
+                const activeSlide = slides[index];
+                calendar.scrollTo({
+                    left: activeSlide.offsetLeft - (calendar.offsetWidth / 2) + (activeSlide.offsetWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
 
-        function setupInteraction() {
-        let touchStartX = 0;
-        let isDragging = false;
-        const slider = document.getElementById('mainSlider');
+            function setupInteraction() {
+                let touchStartX = 0;
+                let isDragging = false;
+                const slider = document.getElementById('mainSlider');
 
-        // Touch
-        slider.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive: true});
-        slider.addEventListener('touchend', e => handleSwipe(touchStartX, e.changedTouches[0].screenX), {passive: true});
+                // Touch
+                slider.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive: true});
+                slider.addEventListener('touchend', e => handleSwipe(touchStartX, e.changedTouches[0].screenX), {passive: true});
 
-        // Mouse Drag
-        slider.addEventListener('mousedown', e => { isDragging = true; touchStartX = e.pageX; });
-        slider.addEventListener('mouseup', e => { if(isDragging) { isDragging = false; handleSwipe(touchStartX, e.pageX); } });
+                // Mouse Drag
+                slider.addEventListener('mousedown', e => {
+                    isDragging = true;
+                    touchStartX = e.pageX;
+                });
+                slider.addEventListener('mouseup', e => {
+                    if (isDragging) {
+                        isDragging = false;
+                        handleSwipe(touchStartX, e.pageX);
+                    }
+                });
 
-        function handleSwipe(start, end) {
-        const delta = start - end;
-        if (Math.abs(delta) > 35) {
-        if (delta > 0) goToIndex(currentIndex + 1);
-        else goToIndex(currentIndex - 1);
-    }
-    }
-    }
+                function handleSwipe(start, end) {
+                    const delta = start - end;
+                    if (Math.abs(delta) > 35) {
+                        if (delta > 0) goToIndex(currentIndex + 1);
+                        else goToIndex(currentIndex - 1);
+                    }
+                }
+            }
 
-        init();
-        document.querySelector('#today').addEventListener('click', () => init());
+            init();
 
-        // La logica che dipende dai dati deve stare QUI
-        console.log("Dati caricati:", menuData);
-    } catch (error) {
-        console.error("Errore durante il caricamento:", error);
-    }
+            // La logica che dipende dai dati deve stare QUI
+            console.log("Dati caricati:", menuData);
+        } catch (error) {
+            console.error("Errore durante il caricamento:", error);
+        }
     }
 
     loadMenu().then();

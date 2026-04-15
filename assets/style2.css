@@ -126,7 +126,6 @@ header h1 {
     width: 100%;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: transform;
-    align-items: center;
 }
 
 .menu-card {
@@ -155,6 +154,8 @@ h3 {
     opacity: 1;
     transform: scale(1);
     box-shadow: 0 12px 30px rgba(0,0,0,0.3); /* Ombra profonda */
+    align-self: baseline;
+    margin-top: 25px;
 }
 
 /* Desktop: Card più larghe e centrate */
@@ -266,7 +267,7 @@ h3 {
     font-size: 1.20rem;
     color: var(--text-on-dark);
     line-height: 1.4;
-    font-weight: 300; /* Testo sottile elegante */
+    font-weight: 400; /* Testo sottile elegante */
 }
 main {
     display: flex;
